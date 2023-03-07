@@ -10,11 +10,18 @@
 		<label>Seats: </label><span> @Model.selectedTable.NumberOfSeats</span>
 	</div>
 
+	@if(string.IsNullOrEmpty(Model.ErrorMessage))
+	{
+		<h1 class="text-warning">@Model.ErrorMessage</h1>
+	}
+
 	<form method="post" asp-route-id="@Model.selectedTable.Id">
 		<input type="text" placeholder="Your Name" asp-for="@Model.GuestName">
 		<input type="email" placeholder="Your E-mail" asp-for="@Model.GuestEmail">
-		<span class="text-warning" asp-validation-for="@Model.GuestName"></span>
-		<span class="text-warning" asp-validation-for="@Model.GuestEmail"></span>
+		<div>
+			<span class="text-danger" asp-validation-for="@Model.GuestName"></span>
+			<span class="text-danger" asp-validation-for="@Model.GuestEmail"></span>
+		</div>
 		<input class="btn btn-outline-success" type="submit" value="Book Table!">
 	</form>
 }

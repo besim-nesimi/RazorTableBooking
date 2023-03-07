@@ -11,9 +11,19 @@ namespace TableBooking.Repos
         {
             this._context = context;
         }
-        public bool BookTable(int id)
+        public bool BookTableById(int id)
         {
-            throw new NotImplementedException();
+            TableModel? tableToBook = GetById(id);
+
+            if(tableToBook != null)
+            {
+                tableToBook.IsBooked = true;
+
+                _context.SaveChanges();
+            }
+			return true;
+
+            
         }
 
         public List<TableModel> GetAll()

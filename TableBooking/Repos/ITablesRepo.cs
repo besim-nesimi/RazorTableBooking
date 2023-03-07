@@ -8,6 +8,6 @@ namespace TableBooking.Repos
 
         TableModel GetById(int id);
 
-        bool BookTable(int id);
-    }
+		bool BookTableById(int id);
+	}
 }
