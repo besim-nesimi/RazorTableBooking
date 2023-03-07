@@ -1,10 +1,26 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1>Welcome to the restaurant</h1>
+
+<h2>- These are our tables -</h2>
+
+<div class="row">
+	@foreach(var table in Model.Tables)
+	{
+	 <div class="col-4">
+		 <h3>Table number: @table.TableNumber</h3>
+		 <div>
+			 <label>Seats: </label><span> @table.NumberOfSeats</span>
+		 </div>
+			@if(!table.IsBooked)
+			{
+				<a asp-page="/Book" asp-route-id="@table.Id" class="btn btn-outline-success">Book table!</a>
+			}
+			else
+			{
+				<a class="btn btn-outline-dark disabled">Book table!</a>
+			}
+		</div>
+	}
 </div>

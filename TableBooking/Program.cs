@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TableBooking.Data;
+using TableBooking.Repos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +9,9 @@ builder.Services.AddRazorPages();
 
 var connectionString = builder.Configuration.GetConnectionString("BookingDbConnection");
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
+
+// Lägger till TablesRepo i Dependency injection container
+builder.Services.AddScoped<ITablesRepo, TablesRepo>();
 
 var app = builder.Build();
 

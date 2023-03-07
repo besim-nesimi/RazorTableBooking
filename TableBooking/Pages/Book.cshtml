@@ -1,0 +1,24 @@
+﻿@page
+@model TableBooking.Pages.BookModel
+@{
+}
+
+@if(Model.selectedTable != null) 
+{
+	<h1>@Model.selectedTable.TableNumber</h1>
+	<div>
+		<label>Seats: </label><span> @Model.selectedTable.NumberOfSeats</span>
+	</div>
+
+	<form method="post" asp-route-id="@Model.selectedTable.Id">
+		<input type="text" placeholder="Your Name" asp-for="@Model.GuestName">
+		<input type="email" placeholder="Your E-mail" asp-for="@Model.GuestEmail">
+		<span class="text-warning" asp-validation-for="@Model.GuestName"></span>
+		<span class="text-warning" asp-validation-for="@Model.GuestEmail"></span>
+		<input class="btn btn-outline-success" type="submit" value="Book Table!">
+	</form>
+}
+else 
+{
+	<h1>Table could not be found.</h1>
+}
