@@ -11,13 +11,16 @@ namespace TableBooking.Repos
         {
             this._context = context;
         }
-        public bool BookTableById(int id)
+        public bool BookTableById(int id, string guestName, string guestEmail)
         {
             TableModel? tableToBook = GetById(id);
 
             if(tableToBook != null)
             {
                 tableToBook.IsBooked = true;
+                tableToBook.DateTimeBooked = DateTime.Now;
+                tableToBook.GuestName = guestName;
+				tableToBook.GuestEmail = guestEmail;
 
                 _context.SaveChanges();
             }

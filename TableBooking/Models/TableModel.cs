@@ -8,5 +8,10 @@
         public int TableNumber { get; set; }
 
         public bool IsBooked { get; set; }
+
+        public DateTime DateTimeBooked { get; set; }
+
+        public string? GuestName { get; set; }
+        public string? GuestEmail { get; set; }
     }
 }

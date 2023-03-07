@@ -38,7 +38,7 @@ namespace TableBooking.Pages
             if(ModelState.IsValid)
             {
                 // Boka ett bord
-                bool bookStatus = repo.BookTableById(id);
+                bool bookStatus = repo.BookTableById(id, GuestName, GuestEmail);
 
                 if(bookStatus)
                 {
